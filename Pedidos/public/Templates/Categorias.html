@@ -1,0 +1,18 @@
+<h2>{{element}}</h2>
+<div id="categories2" ng-controller="system">
+  <h3>Nueva Categoria:</h3>
+  <table>
+  <tr>
+    <th class="cat"><input type="text" name="name" ng-model="newCategory" placeholder="Nombre"></th>
+    <th class="button"><button type="button" ng-click="addCategory()">Agregar</button></th>
+  </tr>
+  </table>
+
+  <h3>Categorias Existentes:</h3>
+  <table>
+  <tr ng-repeat="item in categorias">
+    <th class="cat">{{item}}</th>
+    <th class="button"><button type="button" ng-click="deleteCategory(item,$index)">Eliminar</button></th>
+  </tr>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+<table class="products" ng-if="data" ng-repeat="item in data">
+<tr>
+  <th class="product"><span class="name">{{item.nombre}}</span><br><span class="desc">{{item.descripcion}}</span></th>
+  <th class="add"><span class="price">${{item.precio}}</span><br><button ng-click="add(item.id)">Agregar</button></span></th>
+</tr>
+</table>
+
+
+<table class="orders" ng-if="orders" ng-repeat="item in orders" ng-init="total=0">
+<tr ng-repeat="i in item">
+  <th class="product"><span>{{i.nombre}}</span></th>
+  <th class="price" ng-init="$parent.total=$parent.total+i.precio"><span>$ {{i.precio}}</span></th>
+</tr>
+
+<tr>
+  <th class="product"><button type="button">{{item.estatus}}</button></th>
+  <th class="total"><span>$ {{total}}</span></th>
+</tr>
+</table>
+
+<div id="none" ng-if="none">
+  <span id="none">No tienes ninguna orden pendiente</span>
+</div>

@@ -1,0 +1,38 @@
+  <h1 id="name">Mauro Espinosa</h1>
+
+  <div ng-controller="data">
+  <div id="categories">
+    <span class="select" id="Ordenes" ng-click="focus('Ordenes'); categoria('ordenes')">Ordenes</span>
+    <span ng-repeat="item in categories" class="select" id="{{item}}" ng-click="focus(item); categoria(item)">{{item}}</span>
+  </div>
+  <hr>
+
+  <div id="menu" ng-include=category></div>
+
+  <div id="focus" ng-show="cart"><div id="cart">
+    <h2>Carrito</h2>
+
+    <div ng-if="carrito" id="products">
+      <div ng-repeat="item in carrito">
+      <table>
+      <tr>
+        <th class="product"><span>{{item.nombre}}</span></th>
+        <th><span>${{item.precio}}</span></th>
+      </tr>
+      </table>
+      <ul>
+        <li ng-click="show1 =! show1">Detalles</li>
+        <li ng-click="remove($index)">Quitar</li>
+      </ul>
+      <textarea ng-show="show1" placeholder="ej. Sin cebolla, etc" name="details"></textarea>
+      <hr>
+      </div>
+    </div>
+    <div ng-if="carrito[0]" id="total">
+      <span>Total: ${{getTotal()}}</span>
+      <button ng-click="confirm(); focus('Ordenes'); categoria('ordenes')">Confirmar orden</button>
+    </div>
+  </div></div>
+
+  <div id="circle" ng-click="close(); cart =! cart"><img src={{img}}></div>
+  </div>

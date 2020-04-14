@@ -1,0 +1,42 @@
+<script>
+/*$(document).ready(function(){
+  $("div#wrapper div#categories span").click(function(){
+    $("div#wrapper div#dynamic table").addClass("fadeIn");
+    setTimeout(function(){
+      $("div#wrapper div#dynamic table").removeClass("fadeIn");
+    },300);});});*/
+</script>
+<div id="wrapper" ng-controller="system">
+<h1 id="name">Administrador</h1>
+
+<div id="categories">
+  <span class="category" id="Pendientes" ng-click="focus('Pendientes')">Pendientes</span>
+  <span class="category" id="Preparadas" ng-click="focus('Preparadas')">Preparadas</span>
+  <span class="category" id="Entregadas" ng-click="focus('Entregadas')">Entregadas</span>
+</div>
+<hr>
+
+<div id="dynamic">
+  <table class="orders" ng-repeat="item in orders" ng-if="orders">
+  <tr ng-repeat="i in item">
+    <th class="product"><span>-{{i.nombre}}</span></th>
+    <th class="price"><span>$ {{i.precio}}</span></th>
+  </tr>
+
+  <tr>
+    <th ng-if="pend" class="product"><button class="{{item.estatus}}" ng-click="preparando($event,item.id)" type="button">En preparacion</button><button type="button" ng-click="terminada(item.id)">Lista</button></th>
+    <th ng-if="prep" class="entregado"><button ng-click="entregada(item.id)">Entregada</button></th>
+    <th ng-if="entr" style="text-align:left"><button style="width:150px">Total</button></th>
+    <th class="total"><span>$ {{item.total}}</span></th>
+  </tr>
+  </table>
+</div>
+
+<div class="empty" ng-if="select">
+  <span>Seleccione una categoria</span>
+</div>
+
+<div class="empty" ng-if="empty">
+  <span>No hay nada que mostrar aqui</span>
+</div>
+</div>

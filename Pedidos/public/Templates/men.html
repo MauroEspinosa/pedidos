@@ -1,0 +1,35 @@
+<script>
+$(document).ready(function(){
+  $("div#wrapper div#categories span").click(function(){
+    $("div#wrapper div#dynamic table").addClass("fadeIn");
+    setTimeout(function(){
+      $("div#wrapper div#dynamic table").removeClass("fadeIn");
+    },300);});});
+</script>
+<div id="wrapper" ng-controller="system">
+<h1 id="name">Administrador</h1>
+
+<div id="categories">
+  <span></span>
+  <button ng-click="prompt('Categorias'); cart=!cart" type="button" name="button" class="edit">Editar</button>
+  <span ng-repeat="item in categories" class="category" id="{{item}}" ng-click="categoria(item)">{{item}}</span>
+</div>
+<hr>
+
+<div id="dynamic">
+  <table class="orders" ng-repeat="item in items" ng-init="cart=false">
+  <tr>
+    <th class="product"><span class="name">{{item.nombre}}</span><br><span class="desc">{{item.descripcion}}</span></th>
+    <th class="add"><span class="price">${{item.precio}}</span><br><button ng-click="prompt('Editar', item.nombre, item.precio, item.descripcion, item.categoria, item.id, $index); $parent.cart=!$parent.cart" class="edit">Cambiar</button></th>
+  </tr>
+  </table>
+</div>
+
+<div class="empty" ng-if="select">
+  <span>Seleccione una categoria</span>
+</div>
+<div id="focus" ng-show="cart"><div id="cart" ng-include=section>
+</div></div>
+
+<div id="circle" ng-click="prompt('Agregar'); cart=!cart"><img id="imgPrompt" src={{img}}></div>
+</div>

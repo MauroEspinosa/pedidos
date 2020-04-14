@@ -1,0 +1,18 @@
+<h2>{{element}}</h2>
+<div id="product" ng-controller="system">
+<form ng-submit="addProduct()">
+  <table>
+  <tr>
+    <th id="name"><label for="name">Nombre:</label><br><input required type="text" ng-model="newName" name="name"></th>
+    <th id="price"><label for="name">Precio:</label><br><input required type="text" ng-model="newPrice" name="name"></th>
+  </tr>
+  </table>
+  <label for="category">Categoria:</label><br>
+  <select name="category" ng-options="option for option in categories" ng-model="newCategory" required="true">
+    <option></option>
+  </select>
+  <label for="desc">Descripcion:</label><br>
+  <textarea required ng-model="newDesc" placeholder="ej. Sin cebolla, etc" name="desc"></textarea>
+  <input type="submit" id="save" value="Guardar">
+</form>
+</div>

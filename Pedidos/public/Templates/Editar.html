@@ -1,0 +1,17 @@
+<h2>{{element}}</h2>
+<div id="product">
+  <table>
+  <tr>
+    <th id="name"><label for="name">Nombre:</label><br><input type="text" name="name" ng-model="$parent.editName"></th>
+    <th id="price"><label for="name">Precio:</label><br><input type="text" name="name" ng-model="$parent.editPrice"></th>
+  </tr>
+  </table>
+  <label for="category">Categoria:</label><br>
+  <select name="category" ng-model="$parent.editCateg">
+    <option ng-repeat="item in categorias" value="{{item}}">{{item}}</option>
+  </select>
+  <label for="desc">Descripcion:</label><br>
+  <textarea placeholder="ej. Sin cebolla, etc" name="desc" ng-model="$parent.editDesc"></textarea>
+  <button ng-click="deleteProduct(productId,index,editName,editCateg)">Eliminar Producto</button>
+  <button ng-click="updateProduct(productId,index)">Guardar</button>
+</div>
